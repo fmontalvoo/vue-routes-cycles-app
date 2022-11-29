@@ -2,13 +2,13 @@
     <nav>
         <ul>
             <li>
-                <router-link :to="{ name: 'home' }">Inicio</router-link>
+                <router-link :to="{ name: 'pokemon-list' }">Lista</router-link>
             </li>
             <li>
                 <router-link :to="{ name: 'pokemon-id', params: { id: 21 } }">Pokemon</router-link>
             </li>
             <li>
-                <router-link :to="{ name: 'about' }">Acerca de</router-link>
+                <router-link :to="{ name: 'pokemon-about' }">Acerca de</router-link>
             </li>
             <!-- <li>
                 <RouterLinkCustom v-for="route in routes" :key="route.to" :route="route" />
