@@ -35,8 +35,25 @@ const routes = [
         ]
     },
     {
+        name: 'error',
+        path: '/error',
+        component: () => import(/* webpackChunkName: "Error" */ '@/modules/error/layouts/ErrorLayout.vue'),
+        children: [
+            {
+                path: '404',
+                name: 'error-404',
+                component: () => import(/* webpackChunkName: "PageNotFound" */ '@/modules/error/pages/PageNotFound.vue')
+            },
+            {
+                path: '',
+                name: 'error-default',
+                redirect: { name: 'error-404' }
+            },
+        ]
+    },
+    {
         path: '/:pathMatch(.*)*',
-        component: () => import(/* webpackChunkName: "PageNotFound" */ '@/modules/error/pages/PageNotFound.vue')
+        redirect: { name: 'error-404' }
     },
 ]
 
