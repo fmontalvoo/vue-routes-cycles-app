@@ -10,7 +10,13 @@ const routes = [
         component: () => import(/* webpackChunkName: "AboutPage" */ '@/modules/pokemon/pages/About.vue')
     },
     {
-        path: '/id',
+        path: '/:id',
+        props: route => {
+            const id = Number(route.params.id)
+            return isNaN(id)
+                ? { id: 1 }
+                : { id }
+        },
         component: () => import(/* webpackChunkName: "DetailPage" */ '@/modules/pokemon/pages/Detail.vue')
     },
     {
