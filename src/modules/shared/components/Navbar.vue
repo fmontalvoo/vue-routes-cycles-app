@@ -2,13 +2,19 @@
     <nav>
         <ul>
             <li>
+                <router-link :to="{ name: 'dbz-characters' }">Personajes</router-link>
+            </li>
+            <li>
+                <router-link :to="{ name: 'dbz-about' }">Acerca de DBZ</router-link>
+            </li>
+            <li>
                 <router-link :to="{ name: 'pokemon-list' }">Lista</router-link>
             </li>
             <li>
                 <router-link :to="{ name: 'pokemon-id', params: { id: 21 } }">Pokemon</router-link>
             </li>
             <li>
-                <router-link :to="{ name: 'pokemon-about' }">Acerca de</router-link>
+                <router-link :to="{ name: 'pokemon-about' }">Acerca de Pokemon</router-link>
             </li>
             <!-- <li>
                 <RouterLinkCustom v-for="route in routes" :key="route.to" :route="route" />
@@ -49,11 +55,12 @@ ul li {
 
 li a {
     padding: 8px;
+    color: #354952;
     background-color: #dddddd;
 }
 
 a.router-link-exact-active {
+    color: #41b883;
     background-color: #cccccc;
-    color: #42b983;
 }
 </style>

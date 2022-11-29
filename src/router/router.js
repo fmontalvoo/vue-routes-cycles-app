@@ -14,7 +14,7 @@ const routes = [
             {
                 path: 'about',
                 name: 'pokemon-about',
-                component: () => import(/* webpackChunkName: "AboutPage" */ '@/modules/pokemon/pages/About.vue')
+                component: () => import(/* webpackChunkName: "AboutPokemonPage" */ '@/modules/pokemon/pages/About.vue')
             },
             {
                 path: ':id',
@@ -35,6 +35,28 @@ const routes = [
         ]
     },
     {
+        name: 'dbz',
+        path: '/dbz',
+        component: () => import(/* webpackChunkName: "DBZ" */ '@/modules/dbz/layouts/DBZLayout.vue'),
+        children: [
+            {
+                path: 'about',
+                name: 'dbz-about',
+                component: () => import(/* webpackChunkName: "AboutDBZPage" */ '@/modules/dbz/pages/About.vue')
+            },
+            {
+                path: 'characters',
+                name: 'dbz-characters',
+                component: () => import(/* webpackChunkName: "CharactersPage" */ '@/modules/dbz/pages/Characters.vue')
+            },
+            {
+                path: '',
+                name: 'dbz-default',
+                redirect: { name: 'dbz-characters' }
+            },
+        ]
+    },
+    {
         name: 'error',
         path: '/error',
         component: () => import(/* webpackChunkName: "Error" */ '@/modules/error/layouts/ErrorLayout.vue'),
@@ -50,6 +72,11 @@ const routes = [
                 redirect: { name: 'error-404' }
             },
         ]
+    },
+    {
+        path: '',
+        name: 'default',
+        redirect: { name: 'dbz-about' }
     },
     {
         path: '/:pathMatch(.*)*',
