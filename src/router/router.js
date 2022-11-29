@@ -11,6 +11,7 @@ const routes = [
     },
     {
         path: '/:id',
+        name: 'Pokemon',
         props: route => {
             const id = Number(route.params.id)
             return isNaN(id)

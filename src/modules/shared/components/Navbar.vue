@@ -5,8 +5,11 @@
                 <router-link to="/">Inicio</router-link>
             </li>
             <li>
-                <router-link to="/id">Pokemon</router-link>
+                <router-link to="/25">Pokemon</router-link>
             </li>
+            <!-- <li>
+                <router-link :to="{ name: 'Pokemon', params: { id: 21 } }">Pokemon</router-link>
+            </li> -->
             <li>
                 <router-link to="/about">Acerca de</router-link>
             </li>
