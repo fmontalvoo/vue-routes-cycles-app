@@ -89,4 +89,15 @@ const router = createRouter({
     routes,
 })
 
+// Guard global
+router.beforeEach((to, from, next) => {
+    console.clear()
+    const r = Math.random()
+    console.info({ to, from, next })
+    if (r > 0.9)
+        next({ name: 'error-404' })
+    else
+        next()
+})
+
 export default router
