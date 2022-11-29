@@ -10,9 +10,32 @@
             <li>
                 <router-link :to="{ name: 'about' }">Acerca de</router-link>
             </li>
+            <!-- <li>
+                <RouterLinkCustom v-for="route in routes" :key="route.to" :route="route" />
+            </li> -->
         </ul>
     </nav>
 </template>
+
+<script>
+import { defineAsyncComponent } from 'vue';
+
+export default {
+    components: {
+        RouterLinkCustom: defineAsyncComponent(() => import('./RouterLinkCustom.vue'))
+    },
+    data() {
+        return {
+            routes: [
+                { to: '/home', name: 'Home' },
+                { to: '/pokemon/25', name: 'Pokemon' },
+                { to: '/about', name: 'About' },
+                { to: 'https://www.google.com/', name: 'Google' },
+            ]
+        }
+    }
+}
+</script>
 
 <style scoped>
 ul {
