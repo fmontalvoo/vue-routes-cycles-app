@@ -2,16 +2,18 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
     {
-        path: '/',
+        name: 'home',
+        path: '/home',
         component: () => import(/* webpackChunkName: "ListPage" */ '@/modules/pokemon/pages/List.vue')
     },
     {
+        name: 'about',
         path: '/about',
         component: () => import(/* webpackChunkName: "AboutPage" */ '@/modules/pokemon/pages/About.vue')
     },
     {
-        path: '/:id',
-        name: 'Pokemon',
+        name: 'pokemon-id',
+        path: '/pokemon/:id',
         props: route => {
             const id = Number(route.params.id)
             return isNaN(id)

@@ -2,16 +2,13 @@
     <nav>
         <ul>
             <li>
-                <router-link to="/">Inicio</router-link>
+                <router-link :to="{ name: 'home' }">Inicio</router-link>
             </li>
             <li>
-                <router-link to="/25">Pokemon</router-link>
+                <router-link :to="{ name: 'pokemon-id', params: { id: 21 } }">Pokemon</router-link>
             </li>
-            <!-- <li>
-                <router-link :to="{ name: 'Pokemon', params: { id: 21 } }">Pokemon</router-link>
-            </li> -->
             <li>
-                <router-link to="/about">Acerca de</router-link>
+                <router-link :to="{ name: 'about' }">Acerca de</router-link>
             </li>
         </ul>
     </nav>
