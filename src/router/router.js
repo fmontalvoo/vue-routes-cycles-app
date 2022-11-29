@@ -90,14 +90,32 @@ const router = createRouter({
 })
 
 // Guard global
-router.beforeEach((to, from, next) => {
-    console.clear()
-    const r = Math.random()
-    console.info({ to, from, next })
-    if (r > 0.9)
-        next({ name: 'error-404' })
-    else
+// router.beforeEach((to, from, next) => {
+//     console.clear()
+//     const r = Math.random()
+//     console.info({ to, from, next })
+//     if (r > 0.9)
+//         next({ name: 'error-404' })
+//     else
+//         next()
+// })
+
+// Guard global async
+const canAccess = () => {
+    return new Promise((resolve, reject) => {
+        const r = Math.random()
+        if (r > 0.9)
+            resolve(false)
+        else
+            resolve(true)
+    })
+}
+router.beforeEach(async (to, from, next) => {
+    const authorized = await canAccess()
+    if (authorized)
         next()
+    else
+        next({ name: 'error-404' })
 })
 
 export default router
