@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+import { authGuard } from './auth.guard'
+
 const routes = [
     {
         name: 'pokemon',
@@ -37,6 +39,7 @@ const routes = [
     {
         name: 'dbz',
         path: '/dbz',
+        beforeEnter: [authGuard],
         component: () => import(/* webpackChunkName: "DBZ" */ '@/modules/dbz/layouts/DBZLayout.vue'),
         children: [
             {
@@ -101,21 +104,21 @@ const router = createRouter({
 // })
 
 // Guard global async
-const canAccess = () => {
-    return new Promise((resolve, reject) => {
-        const r = Math.random()
-        if (r > 0.9)
-            resolve(false)
-        else
-            resolve(true)
-    })
-}
-router.beforeEach(async (to, from, next) => {
-    const authorized = await canAccess()
-    if (authorized)
-        next()
-    else
-        next({ name: 'error-404' })
-})
+// const canAccess = () => {
+//     return new Promise((resolve, reject) => {
+//         const r = Math.random()
+//         if (r > 0.9)
+//             resolve(false)
+//         else
+//             resolve(true)
+//     })
+// }
+// router.beforeEach(async (to, from, next) => {
+//     const authorized = await canAccess()
+//     if (authorized)
+//         next()
+//     else
+//         next({ name: 'error-404' })
+// })
 
 export default router
